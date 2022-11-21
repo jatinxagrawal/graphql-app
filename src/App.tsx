@@ -15,6 +15,19 @@ const schemas = {
     `,
   };
 
+const obj: Record<string, string> = {
+  pizza: `
+    type Query{
+      pizzas: [Pizza!]
+    }
+    `,
+  burger: `
+    type Query{
+      Burger: [Pizza!]
+    }
+    `,
+};
+
 function App() {
 
   let fileReader:any;
@@ -26,6 +39,8 @@ function App() {
       code: content,
       libraries: "",
     });
+    obj["Load"] = content;
+    // console.log(obj);
   };
 
   const fileChosen = (file:any) => {
@@ -52,10 +67,12 @@ function App() {
       <div className="main">
         <div className="sideNav">
           <button className="button" onClick={() => newGraph()}>
-            Create New Graph
+            New
           </button>
           <br></br>
-          <label htmlFor='file-input' className='label'>Load Existing</label>
+          <label htmlFor="file-input" className="label">
+            Load
+          </label>
           <input
             type="file"
             id="file-input"
@@ -72,10 +89,12 @@ function App() {
             display: "flex",
             position: "relative",
           }}
+          className="stDiv"
         >
           <GraphQLEditor
             setSchema={(props: any) => setMySchema(props)}
             schema={mySchema}
+            diffSchemas={obj}
           />
 
           {/* <GraphQLGqlEditor
@@ -83,7 +102,6 @@ function App() {
             setGql={(gqlString) => setGql(gqlString)}
             schema={{ code: mySchema.code }}
           /> */}
-
         </div>
       </div>
     </>

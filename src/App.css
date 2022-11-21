@@ -12,6 +12,8 @@
   border: 1px solid blue;
   border-radius: 10px;
   margin-bottom: 20px;
+  width: 55px;
+  font-size: 16px;
 }
 
 .main div:not([class]){
@@ -31,4 +33,9 @@ label {
   color: white;
   border: 1px solid blue;
   border-radius: 10px;
+  font-size: 16px;
+}
+
+.stDiv {
+  height: 1000px !important;
 }
